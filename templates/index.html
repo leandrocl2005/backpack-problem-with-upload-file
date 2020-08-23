@@ -1,0 +1,95 @@
+{% extends 'layout.html' %} {% block styles %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='main.css')}}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='index.css')}}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="img-container">
+    <img
+      src="{{url_for('static', filename='chris-yang-unsplash.jpg')}}"
+      alt="Backpack photo by Chris Yang from Unsplash"
+    />
+  </div>
+  <div class="title-card-container">
+    <h1 class="title">
+      <span class="title-1">Prod N</span>
+      <span class="title-2">A mala</span>
+    </h1>
+    <div class="card-container">
+      <div class="card">
+        <h2 class="card-title">
+          <span>Carregue</span>
+          <span>o arquivo</span>
+          <span>para carregar</span>
+          <span>a mala</span>
+        </h2>
+        <form
+          action="{{url_for('upload_file')}}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <input
+            type="file"
+            name="file"
+            id="file"
+            class="inputfile"
+            data-multiple-caption="{count} files selected"
+            multiple
+          />
+          <label
+            for="file"
+            id="file-label"
+          >
+            <div id="popover" class="invisible">
+              <img src="{{url_for('static', filename='csv.png')}}" alt="csv example" />
+            </div>
+            <span>Escolha o arquivo</span>
+            <div class="upload-field-divider">|</div>
+            <i class="fas fa-cloud-upload-alt"></i>
+          </label>
+          <div class="btn-container">
+            <input class="btn" type="submit" value="Enviar" name="submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var inputs = document.querySelectorAll(".inputfile");
+  Array.prototype.forEach.call(inputs, function (input) {
+    var label = input.nextElementSibling,
+      labelVal = label.innerHTML;
+
+    input.addEventListener("change", function (e) {
+      var fileName = "";
+      if (this.files && this.files.length > 1)
+        fileName = (this.getAttribute("data-multiple-caption") || "").replace(
+          "{count}",
+          this.files.length
+        );
+      else fileName = e.target.value.split("\\").pop();
+
+      if (fileName) label.querySelector("span").innerHTML = fileName;
+      else label.innerHTML = labelVal;
+    });
+  });
+  document.querySelector("#file-label").addEventListener('mouseover', showPopover);
+  document.querySelector("#file-label").addEventListener('mouseout', hidePopover);
+  function showPopover() {
+    document.getElementById("popover").classList.add("visible");
+    document.getElementById("popover").classList.remove("invisible");
+  }
+  function hidePopover() {
+    document.getElementById("popover").classList.remove("visible");
+    document.getElementById("popover").classList.add("invisible");
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+ }
+ 
+ h1, h2, h3, h4, h5, h6 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+ }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.container .img-container {
+  width: 100%;
+  height: 100vh;
+  background: #04060a;
+  display: flex;
+  justify-items: center;
+}
+
+.container .img-container img {
+  max-width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  margin: auto;
+}
+
+.container .title-card-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.container .title-card-container .title {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-left: -50%;
+  height: 4rem;
+}
+
+.container .title-card-container .title .title-1 {
+  color: #207ac6;
+  margin-right: -0.2rem;
+}
+
+.container .title-card-container .title .title-1 {
+  color: #207ac6;
+}
+
+.container .title-card-container .title .title-1,
+.container .title-card-container .title .title-2 {
+  font-size: 4rem;
+}
+
+.container .title-card-container .card-container {
+  height: calc(100vh - 7rem);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.container .title-card-container .card-container .card {
+  background: #04060a;
+  margin: auto;
+  color: white;
+  padding: 0 2rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.25);
+  max-width: 95%;
+}
+
+.container .title-card-container .card-container .card .btn {
+  background: #04060a;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  transition: 400ms;
+}
+
+.container .title-card-container .card-container .card .btn:hover {
+  color: #207ac6;
+  border: 2px solid #207ac6;
+}
+
+

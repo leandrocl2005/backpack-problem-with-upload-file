@@ -1,0 +1,93 @@
+{% extends 'layout.html' %} {% block styles %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='main.css')}}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='results.css')}}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="img-container">
+    <img
+      src="{{url_for('static', filename='chris-yang-unsplash.jpg')}}"
+      alt="Backpack photo by Chris Yang from Unsplash"
+    />
+  </div>
+  <div class="title-card-container">
+    <h1 class="title">
+      <span class="title-1">Prod N</span>
+      <span class="title-2">A mala</span>
+    </h1>
+    <div class="card-container">
+      <div class="card">
+
+        <div class="card-title-new-travel-btn-container">
+          <h2 class="card-title">
+            <span>Leve</span>
+            <span>Na mala</span>
+          </h2>
+          <div class="btn-container">
+            <a class="new-travel" href="/">Nova viajem</a>
+          </div>
+        </div>
+
+        <div class="items-container">
+          {% for item in items %}
+            <div class="item">
+              {{item}}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="results-container">
+          <h3>Economizou <span class="result">{{result}}</span> dólares!</h3>
+        </div>
+
+        <div class="contact-container">
+          <hr />
+          <div class="name-container">
+            <p>Leandro Cruvinel Lemes</p>
+          </div>
+          <div class="icons-container">
+            <a href="https://github.com/leandrocl2005"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/leandrolemes/"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="mailto:leandro.lemes@uftm.edu.br"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var inputs = document.querySelectorAll( '.inputfile' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+	var label	 = input.nextElementSibling,
+		labelVal = label.innerHTML;
+
+	input.addEventListener( 'change', function( e )
+	{
+		var fileName = '';
+		if( this.files && this.files.length > 1 )
+			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+		else fileName = e.target.value.split( '\\' ).pop();
+
+		if( fileName )
+			label.querySelector( 'span' ).innerHTML = fileName;
+		else
+			label.innerHTML = labelVal;
+	});
+});
+</script>
+{% endblock %}
